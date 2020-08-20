@@ -19,6 +19,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :introduction, length: {maximum: 50}
 
+
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
@@ -30,5 +31,21 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
+
+  def self.search(search,word)
+      if search == "forword_match"
+           User.where(["name LIKE?", "#{word}%"])
+      elsif search == "backword_match"
+           User.where(["name LIKE?", "%#{word}"])
+      elsif search == "perfect_match"
+           User.where(name: word)
+      elsif search == "partial_match"
+           User.where(["name LIKE?", "%#{word}%"])
+      else
+           User.all
+      end
+  end
+
 
 end

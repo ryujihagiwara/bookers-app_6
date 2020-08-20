@@ -1,9 +1,15 @@
 <div class="conteiner">
   <div class="row">
 
+
   	<div class="col-xs-offset-1 col-xs-10">
   		<h2>Follow Users</h2>
 
+    <% if @users.empty? %>
+
+      <p>ユーザーはいません</p>
+
+　  <% else %>
 
   		 <table class="table">
 
@@ -38,6 +44,7 @@
 
   		 </table>
 
+    <% end %>
 
 
     </div>
