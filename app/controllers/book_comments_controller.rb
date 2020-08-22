@@ -6,11 +6,9 @@ class BookCommentsController < ApplicationController
 	  @book_comment.book_id = @book.id
 	  @book_new = Book.new
 	 if @book_comment.save
-	  redirect_to book_path(@book)
-	 else
+	    render :index
       # @book_comments = BookComment.where(book_id: @book.id)
       # @book_comment = BookComment.new
-	  render 'books/show'
 	 end
 	end
 
