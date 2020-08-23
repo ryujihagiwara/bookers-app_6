@@ -34,7 +34,7 @@
 		    </tr>
 		  </thead>
 
-		  <tbody class="comment-area">
+		  <tbody class="comment_area">
 
 		  	<%= render 'book_comments/index', book: @book %>
 
@@ -57,7 +57,15 @@
 	       <% end %>
 	       <!-- エラーメッセージ表示-->
 
-	      	<%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
+	      	<%= form_with(model: [@book, @book_comment], url: book_book_comments_path(@book)) do |f| %>
+
+              <%= f.text_area :comment, size: "80x5" %>
+
+              <%= f.submit "送信" %>
+
+            <% end %>
+
+
 
 		</div>
 
